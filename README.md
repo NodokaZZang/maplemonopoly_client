@@ -1,4 +1,4 @@
-# maplemonopoly_server
+# maplemonopoly_client
 Turn-based games created using the Select models of Directx2D and Winsock2.
 
 
