@@ -1,0 +1,273 @@
+#pragma once
+
+enum Threadid : unsigned int
+{
+	BGM = 1,
+	SOUND = 2,
+	LOAD = 3,
+	RECV = 4
+};
+
+enum SceneType : unsigned int
+{
+	NONE=  -1,
+	LOADING_SCENE = 0,
+	LOGIN_SCENE = 1,
+	LOBBY_SCENE = 2,
+	GAME_SCENE = 3,
+	SCENE_COUNT = 4
+};
+
+enum ResourceName : unsigned int
+{
+	LOADING_BACKGROUND_BITMAP,
+	LOGIN_BACKGROUND_BITMAP,
+	LOGIN_ALERTMODAL_BITMAP,
+	LOBBY_BACKGROUND_BITMAP,
+	LOBBY_CREATEROOMMODAL_BITMAP,
+	WATING_ROOM_BACKGROUND_BITMAP,
+	ORANGE_MURSHROOM_BITMAP,
+	PIG_BITMAP,
+	HORN_MURSHROOM_BITMAP,
+	ORANGE_MURSHROOM_IDLE_ANIMATION,
+	HORN_MURSHROOM_IDLE_ANIMATION,
+	PIG_IDLE_ANIMATION,
+	ORANGE_MURSHROOM_MOVE_ANIMATION,
+	HORN_MURSHROOM_MOVE_ANIMATION,
+	PIG_MOVE_ANIMATION,
+	GAME_BACKGROUND_BITMAP,
+	GAME_BOARD_BITMAP,
+	GAME_DICE_BITMAP,
+	GAME_DICE_ONE_ANIMATION,
+	GAME_DICE_TWO_ANIMATION,
+	GAME_DICE_THREE_ANIMATION,
+	GAME_DICE_FOUR_ANIMATION,
+	GAME_DICE_FIVE_ANIMATION,
+	GAME_DICE_SIX_ANIMATION,
+	GAME_MODAL_VIEW_BITMAP,
+	GAME_MONO_BITMAP,
+	GAME_MONEY_BITMAP,
+	LOGIN_BGM,
+	DICE_DROP_SOUND,
+	DICE_NUMBER_BITMAP,
+	READY_BITMAP,
+
+	USERINFO1_BITMAP,
+	USERINFO2_BITMAP,
+	USERINFO3_BITMAP,
+	USERINFO4_BITMAP,
+
+
+	GAME_ONEPICK_HOUSE,
+	GAME_ONEPICK_HOTEL,
+	GAME_TWOPICK_HOUSE,
+	GAME_TWOPICK_HOTEL,
+	GAME_THREEPICK_HOUSE,
+	GAME_THREEPICK_HOTEL,
+	GAME_FOURPICK_HOUSE,
+	GAME_FOURPICK_HOTEL,
+	GAME_DICE_BTN_BITMAP,
+	GAME_ALERT_TEXT_BITMAP,
+
+	GAME_ONE_DICE,
+	GAME_TWO_DICE,
+	GAME_THREE_DICE,
+	GAME_FOUR_DICE,
+	GAME_FIVE_DICE,
+	GAME_SIX_DICE,
+	GAME_SEVEN_DICE,
+	GAME_EIGHT_DICE,
+	GAME_NINE_DICE,
+	GAME_TEN_DICE,
+	GAME_ELEVEN_DICE,
+	GAME_TWELVE_DICE,
+	GAME_DICE_BTN_PRESS_SPRITE,
+	GAME_DICE_BTN_PRESS_UP_SPRITE,
+	GAME_MARKER_BITMAP,
+	GAME_MARKER_SPRITE,
+
+	ONE_SOUND,
+	TWO_SOUND,
+	THREE_SOUND,
+	FOUR_SOUND,
+	FIVE_SOUND,
+	SIX_SOUND,
+	SEVEN_SOUND,
+	EIGHT_SOUND,
+	NINE_SOUND,
+	TEN_SOUND,
+	ELEVEN_SOUND,
+	TWELVE_SOUND,
+	MYTURN_SOUND,
+};
+
+enum Location : unsigned int
+{
+	LOBBY_ROOM = 0,
+	WATING_ROOM = 1,
+	GAME_ROOM = 2
+};
+
+struct Packet
+{
+	WORD _size;			// Pakcet Size
+	WORD _cnt;			// data cnt 
+	WORD _type;			// data type
+	char _data[1000];	// data
+};
+
+enum : int
+{
+	PKT_S_LOGIN = 0,
+	PKT_S_LOBBYASYNC = 1,
+	PKT_C_LOBBYASYNC = 2,
+	PKT_S_LOBBYCHAT = 3,
+	PKT_C_LOBBYCHAT = 4,
+	PKT_S_CREATEROOM = 5,
+	PKT_S_ENTERROOM = 6,
+	PKT_C_WROOM_ENTEROTHERUSER = 7,
+	PKT_C_WROOM_ENTERUSER = 8,
+	PKT_S_WROOMCHAT = 9,
+	PKT_C_WROOMCHAT = 10,
+	PKT_S_EXITWROOM = 11,
+	PKT_S_PICKCHANGE = 12,
+	PKT_C_WROOM_ASYNCUSERLIST = 13,
+	PKT_C_PICKCHANGE = 14,
+	PKT_S_READY = 15,
+	PKT_C_READY = 16,
+	PKT_C_ENTERGAME = 17,
+	PKT_C_GAMEINIT = 18,
+	PKT_C_GAMETURNSEND = 19,
+	PKT_C_TURNINFO = 20,
+	PKT_S_DICEDROP = 21,
+	PKT_C_DICEDROP = 22,
+	PKT_S_DICEDROPEND = 23,
+	PKT_C_DICEDROPEND = 24,
+	PKT_S_PLAYERMOVEEND = 25,
+	PKT_C_PLAYERMOVEEND = 26,
+	PKT_C_BUYREGION = 27,
+	PKT_C_PLAYERDEAD = 28,
+	PKT_C_PASSCOST = 29,
+	PKT_C_BUYOTHERREGION = 30,
+	PKT_S_PASSTURN = 31,
+	PKT_S_BUYOTHERREGION = 32,
+	PKT_S_BUYREGION = 33,
+	PKT_C_BUYREGIONRESPONSE = 34,
+	PKT_C_BUYREGIONOTHERRESPONSE = 35,
+	PKT_S_PLAYERDEAD = 36,
+	PKT_C_GAMEEND = 37,
+	PKT_C_DISCONNECT = 38,
+};
+
+
+enum Roomstatus : int
+{
+	HOLD = 0,
+	GAME = 1
+};
+
+struct SpriteBinaryFileHeader
+{
+	char fileName[256];
+	int resourceType;
+	int  spriteCount;
+};
+
+struct SpriteBinaryFileData
+{
+	D2D1_RECT_F		rect;
+	D2D1_POINT_2F	pivotPos;
+};
+
+
+enum RESOURCE_TYPE : int
+{
+	SPRITE = 0,
+	ANIMATION = 1,
+};
+
+enum Pick : int
+{
+	HORN_MURSHROOM = 0,
+	ORANGE_MURSHROOM = 1,
+	PIG = 2,
+	NOUSER = 3
+};
+
+enum PlayerState : int
+{
+	IDLE = 0,
+	MOVE = 1
+};
+
+enum DiceState : int
+{
+	DICE_HOLD = 0,
+	DICE_DROP = 1,
+	DICE_RESULT = 2
+};
+
+struct DiceData
+{
+	int _dice1;
+	int _dice2;
+	int _sum;
+	int _playerIndex;
+};
+
+struct Region
+{
+	int _ownerPlayerIndx = -1;
+	int _passCost = 0;
+	int _mapIndex = 0;
+	int _level = 0;
+	int _oriCost = 0;
+};
+
+struct ClientMapData
+{
+	int _xPos;
+	int _yPos;
+	bool _rotate;
+
+	int _mxPos;
+	int _myPos;
+};
+
+struct SceneChangeData
+{
+	bool	  _loading;
+	SceneType _type;
+};
+
+enum ViewType : int
+{
+	VIEW_NONE = -1,
+	LOBBY_VIEW = 0,
+	CROOM_VIEW = 1,
+	WROOM_VIEW = 2,
+	VIEW_COUNT = 3
+};
+
+enum AlertTextState : int
+{
+	AlertTextState_NONE = -1,
+	AlertTextState_DOUBLE = 0,
+	AlertTextState_MONEY = 1
+};
+
+struct PacketHeader
+{
+	unsigned __int16 size;
+	unsigned __int16 id; // 프로토콜ID (ex. 1=로그인, 2=이동요청)
+};
+
+enum ButtonCommand 
+{
+	EVENTNONE = -1,
+	EXIT = 0,
+	HONYPICKCHANGE = 1,
+	ORANGEPICKCHANGE = 2,
+	PIGPICKCHANGE = 3,
+	READY = 4,
+};
